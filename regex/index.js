@@ -83,10 +83,11 @@ function example9() {
 }
 
 function example10() {
-  const str = `&lt;a href="https://www.google.com"&gt;Google&lt;/a&gt; &lt;a class="aaa" href="http://facebook.com" target="_blank"&gt;Facebook&lt;/a&gt;`;
-  // const regex = /[^&lt;]*&lt;a\s[^&gt;]*href\="([^"]*)"[^&gt;]*&gt;(.*)&lt;\/a&gt;/g;
-  const regex = /[^&lt;]*&lt;a\s.*(?=href=)/g;
-  console.log(str.replace(regex, '$1'));
+  const str = `&lt;a href="https://www.google.com"&gt;Google&lt;/a&gt;&lt;a class="aaa" href="http://facebook.com" target="_blank"&gt;Facebook&lt;/a&gt;`;
+  const regex = /&lt;a\s.*?href="(.*?)".*?&gt;(.*?)&lt;\/a&gt;/g;
+  console.log(str.replace(regex, '$1\n'));
+  console.log(regex.exec(str));
+  console.log(regex.exec(str));
   output(str, regex, document.querySelector('pre'));
 }
 
